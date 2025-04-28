@@ -26,3 +26,5 @@ Explored unsupervised methods for detecting emerging fraud patterns.
 
 Dataset:
 The dataset used is creditcard.csv, which contains anonymized credit card transactions labeled as fraudulent or legitimate.
+
+Dataset link: https://drive.google.com/file/d/1o1MwgITrVhQntjW1oEYDt7VYwaK4G7xK/view?usp=sharing
