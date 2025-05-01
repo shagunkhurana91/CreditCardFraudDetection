@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credit Card Fraud Detection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 30px;
+        }
+        h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+            gap: 20px;
+        }
+        .input-group {
+            flex: 1;
+            min-width: 300px;
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+        input[type="number"], input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        .feature-row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .feature-item {
+            flex: 1;
+        }
+        input[type="submit"] {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .prediction {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Credit Card Fraud Detection</h1>
+        
+        <form method="POST" action="/predict">
+            <h2>Transaction Details</h2>
+            <div class="row">
+                <div class="input-group">
+                    <label for="Time">Time:</label>
+                    <input type="number" id="Time" name="Time" required step="any">
+                </div>
+                <div class="input-group">
+                    <label for="Amount">Amount ($):</label>
+                    <input type="number" id="Amount" name="Amount" required step="0.01" min="0">
+                </div>
+            </div>
+            
+            <h2>PCA Features</h2>
+            <div class="feature-row">
+                <div class="feature-item">
+                    <label for="V1">V1:</label>
+                    <input type="number" id="V1" name="V1" required step="any">
+                </div>
+                <div class="feature-item">
+                    <label for="V2">V2:</label>
+                    <input type="number" id="V2" name="V2" required step="any">
+                </div>
+                <div class="feature-item">
+                    <label for="V3">V3:</label>
+                    <input type="number" id="V3" name="V3" required step="any">
+                </div>
+            </div>
+            
+            <div class="feature-row">
+                <div class="feature-item">
+                    <label for="V4">V4:</label>
+                    <input type="number" id="V4" name="V4" required step="any">
+                </div>
+                <div class="feature-item">
+                    <label for="V5">V5:</label>
+                    <input type="number" id="V5" name="V5" required step="any">
+                </div>
+                <div class="feature-item">
+                    <label for="V6">V6:</label>
+                    <input type="number" id="V6" name="V6" required step="any">
+                </div>
+            </div>
+            
+            <div class="feature-row">
+                <div class="feature-item">
+                    <label for="V7">V7:</label>
+                    <input type="number" id="V7" name="V7" required step="any">
+                </div>
+                <div class="feature-item">
+                    <label for="V8">V8:</label>
+                    <input type="number" id="V8" name="V8" required step="any">
+                </div>
+                <div class="feature-item">
+                    <label for="V9">V9:</label>
+                    <input type="number" id="V9" name="V9" required step="any">
+                </div>
+            </div>
+            
+            <div class="feature-row">
+                <div class="feature-item">
+                    <label for="V10">V10:</label>
+                    <input type="number" id="V10" name="V10" required step="any">
+                </div>
+                <div class="feature-item">
+                    <label for="V11">V11:</label>
+                    <input type="number" id="V11" name="V11" required step="any">
+                </div>
+                <div class="feature-item">
+                    <label for="V12">V12:</label>
+                    <input type="number" id="V12" name="V12" required step="any">
+                </div>
+            </div>
+            
+            <div class="feature-row">
+                <div class="feature-item">
+                    <label for="V13">V13:</label>
+                    <input type="number" id="V13" name="V13" required step="any">
+                </div>
+                <div class="feature-item">
+                    <label for="V14">V14:</label>
+                    <input type="number" id="V14" name="V14" required step="any">
+                </div>
+                <div class="feature-item">
+                    <label for="V15">V15:</label>
+                    <input type="number" id="V15" name="V15" required step="any">
+                </div>
+            </div>
+            
+            <div class="feature-row">
+                <div class="feature-item">
+                    <label for="V16">V16:</label>
+                    <input type="number" id="V16" name="V16" required step="any">
+                </div>
+                <div class="feature-item">
+                    <label for="V17">V17:</label>
+                    <input type="number" id="V17" name="V17" required step="any">
+                </div>
+                <div class="feature-item">
+                    <label for="V18">V18:</label>
+                    <input type="number" id="V18" name="V18" required step="any">
+                </div>
+            </div>
+            
+            <div class="feature-row">
+                <div class="feature-item">
+                    <label for="V19">V19:</label>
+                    <input type="number" id="V19" name="V19" required step="any">
+                </div>
+                <div class="feature-item">
+                    <label for="V20">V20:</label>
+                    <input type="number" id="V20" name="V20" required step="any">
+                </div>
+                <div class="feature-item">
+                    <label for="V21">V21:</label>
+                    <input type="number" id="V21" name="V21" required step="any">
+                </div>
+            </div>
+            
+            <div class="feature-row">
+                <div class="feature-item">
+                    <label for="V22">V22:</label>
+                    <input type="number" id="V22" name="V22" required step="any">
+                </div>
+                <div class="feature-item">
+                    <label for="V23">V23:</label>
+                    <input type="number" id="V23" name="V23" required step="any">
+                </div>
+                <div class="feature-item">
+                    <label for="V24">V24:</label>
+                    <input type="number" id="V24" name="V24" required step="any">
+                </div>
+            </div>
+            
+            <div class="feature-row">
+                <div class="feature-item">
+                    <label for="V25">V25:</label>
+                    <input type="number" id="V25" name="V25" required step="any">
+                </div>
+                <div class="feature-item">
+                    <label for="V26">V26:</label>
+                    <input type="number" id="V26" name="V26" required step="any">
+                </div>
+                <div class="feature-item">
+                    <label for="V27">V27:</label>
+                    <input type="number" id="V27" name="V27" required step="any">
+                </div>
+            </div>
+            
+            <div class="feature-row">
+                <div class="feature-item" style="max-width: 33.33%;">
+                    <label for="V28">V28:</label>
+                    <input type="number" id="V28" name="V28" required step="any">
+                </div>
+            </div>
+
+            <input type="submit" value="Analyze Transaction">
+        </form>
+
+        <!-- Display prediction -->
+        {% if prediction_text %}
+            <div class="prediction">
+                <h2>{{ prediction_text }}</h2>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
